@@ -1,5 +1,9 @@
 <?php
+require 'vendor/autoload.php';
 
-echo "Test 123";
+Flight::route('/', function() {
+    echo "Setup on the second machine";
+});
 
+Flight::start();
 ?>
