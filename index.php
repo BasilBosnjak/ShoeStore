@@ -2,7 +2,7 @@
 require 'vendor/autoload.php';
 
 Flight::route('/', function() {
-    echo "Setup on the second machine";
+    echo "Creating a new branch!";
 });
 
 Flight::start();
