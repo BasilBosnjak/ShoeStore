@@ -28,16 +28,24 @@ class ProjectDao{
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 
+
+  public function get_by_id($id){
+    $stmt = $this->conn->prepare("SELECT * FROM user WHERE id = :id");
+    $stmt->execute(['id' => $id]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
   /**
   * Method used to add todo to the database
+  */
 
-  public function add($description, $created){
-    $stmt = $this->conn->prepare("INSERT INTO todos (description, created) VALUES (:description, :created)");
-    $stmt->execute(['description' => $description, 'created' => $created]);
+  public function add($user){
+    $stmt = $this->conn->prepare("INSERT INTO user (first_name, last_name) VALUES (:first_name, :last_name)");
+    $stmt->execute(['first_name' => $user['first_name'], 'last_name' => $user['last_name']]);
   }
 
   /**
   * Delete todo record from the database
+  */
 
   public function delete($id){
     $stmt = $this->conn->prepare("DELETE FROM todos WHERE id=:id");
@@ -47,12 +55,13 @@ class ProjectDao{
 
   /**
   * Update todo record
+  */
 
   public function update($id, $description, $created){
     $stmt = $this->conn->prepare("UPDATE todos SET description=:description, created=:created WHERE id=:id");
     $stmt->execute(['id' => $id, 'description' => $description, 'created' => $created]);
   }
-*/
+
 }
 
 ?>
