@@ -2,29 +2,13 @@
 require_once '../vendor/autoload.php';
 require_once "dao/UserDao.class.php";
 
-Flight::register("userDao", "UserDao");
+require_once "services/UserService.class.php";
 
-Flight::route('GET /users', function() {
-  Flight::json(Flight::userDao()->get_all());
-});
-
-Flight::route('GET /users/@id', function($id){
-  Flight::json(Flight::userDao()->get_by_id($id));
-});
-
-Flight::route('POST /users', function(){
-  Flight::json(Flight::userDao()->add(Flight::request()->data->getData()));
-});
-
-Flight::route('PUT /users/@id', function($id){
-  Flight::json(Flight::userDao()->update($id, Flight::request()->data->getData()));
-});
+Flight::register("userService", "UserService");
 
 
-Flight::route('DELETE /user/@id', function($id){
-  Flight::json(Flight::userDao()->delete($id));
-});
 
+require_once "routes/UserRoutes.php";
 
 
 Flight::start();
