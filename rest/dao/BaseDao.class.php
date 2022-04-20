@@ -15,7 +15,7 @@ class BaseDao{
     $host = "shoestore-do-user-11405523-0.b.db.ondigitalocean.com:25060";
     $database = "defaultdb";
     $schema = "Shoes";
-    $this->conn = new PDO("mysql:host=$servername;dbname=$schema", $username, $password);
+    $this->conn = new PDO("mysql:host=$host;dbname=$schema", $username, $password);
     // set the PDO error mode to exception
     $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   }
