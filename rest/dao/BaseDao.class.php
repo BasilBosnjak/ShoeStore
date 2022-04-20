@@ -11,7 +11,7 @@ class BaseDao{
   public function __construct($table_name){
     $this->table_name = $table_name;
     $username = "doadmin";
-    $password = "S@HFr?SdgG!Cx8F";
+    $password = "AVNS_gBfrr5wsp35EjCs";
     $host = "shoestore-do-user-11405523-0.b.db.ondigitalocean.com:25060";
     $database = "defaultdb";
     $schema = "Shoes";
