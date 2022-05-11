@@ -1,4 +1,6 @@
 <?php
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 
 Flight::route('GET /users', function() {
   Flight::json(Flight::userService()->get_all());
