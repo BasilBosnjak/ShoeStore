@@ -1,10 +1,15 @@
 <?php
 require_once '../vendor/autoload.php';
 require_once "dao/UserDao.class.php";
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 
+require_once __DIR__.'/Config.class.php';
 require_once "services/UserService.class.php";
 
 Flight::register("userService", "UserService");
+Flight::register("userDao", "UserDao");
+
 
 // middleware method for login
 Flight::route('/*', function(){
