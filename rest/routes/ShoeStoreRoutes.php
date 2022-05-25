@@ -2,6 +2,13 @@
 require_once '../vendor/autoload.php';
 require_once "dao/UserDao.class.php";
 
+/**
+ * @OA\Get(path="/users", tags={"todo"}, security={{"ApiKeyAuth": {}}},
+ *         summary="Return all users from the API. ",
+ *         @OA\Response( response=200, description="List of users.")
+ * )
+ */
+
 Flight::register("userDao", "UserDao");
 
 Flight::route('GET /users', function() {

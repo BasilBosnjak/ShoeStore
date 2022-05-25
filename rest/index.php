@@ -15,7 +15,7 @@ Flight::register("userDao", "UserDao");
 Flight::route('/*', function(){
   //perform JWT decode
   $path = Flight::request()->url;
-  if ($path == '/login') return TRUE; // exclude login route from middleware
+  if ($path == '/login' || $path == '/docs.json') return TRUE; // exclude login route from middleware
 
   $headers = getallheaders();
   if (@!$headers['Authorization']){
@@ -33,7 +33,17 @@ Flight::route('/*', function(){
   }
 });
 
+/* REST API documentation endpoint */
+Flight::route('GET /docs.json', function() {
+  $openapi = \OpenApi\scan('routes');
+  header('Content-Type: application/json');
+  echo $openapi->toJson();
+});
+
+
+
 require_once "routes/UserRoutes.php";
+require_once "routes/ShoeStoreRoutes.php";
 
 
 Flight::start();
